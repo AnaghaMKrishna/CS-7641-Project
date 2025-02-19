@@ -78,13 +78,15 @@ As we have data from 6 types of cancers, we expect to see 6 distinct clusters an
 
 
 ## Contribution
-| Name  | Proposal Contributions |
-| ------------- | ------------- |
-| Hina Gaur  | Results and Discussion, References, Video  |
-| Anagha Mohana Krishna | Problem Definition, References, Video  |
-| Mridul Anand | Introduction, Results and Discussion, References, Video  |
+
+| Name       | Proposal Contributions|        
+|:-------------|:------------------|
+| Hina Gaur          | Results and Discussion, References, Video | 
+| Anagha Mohana Krishna  | Problem Definition, References, Video  |
+| Mridul Anand           | Introduction, Results and Discussion, References, Video   | 
 | Ani Vedartham | Methods, References  |
 | Vedu Arya | Methods, References  |
+
 
 ## References
 
