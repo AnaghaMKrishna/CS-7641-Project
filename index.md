@@ -1,6 +1,5 @@
 ---
 layout: default
-# description: Group 55
 ---
 
 ![DNA](./thumbnail.png)
