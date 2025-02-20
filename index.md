@@ -23,4 +23,3 @@ Machine learning approaches have become indispensable in the analysis of RNA-seq
 3. Anagha Mohana Krishna
 4. Ani Vedartham
 5. Vedansh Arya
-
