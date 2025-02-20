@@ -68,9 +68,7 @@ As we have data from 6 types of cancers, we expect to see 6 distinct clusters an
 
 ## Gantt Chart
 
-<iframe width="700" height="546" frameborder="0" scrolling="no" src="./GanttChart.xlsx"></iframe>
-<!-- <iframe width="700" height="546" frameborder="0" scrolling="no" src="https://gtvault-my.sharepoint.com/personal/akrishna311_gatech_edu/_layouts/15/Doc.aspx?sourcedoc={6fcf62a7-2c6f-42aa-9d1b-38985759eb9b}&action=embedview&wdAllowInteractivity=False&wdInConfigurator=True&wdInConfigurator=True"></iframe> -->
-
+<iframe width="800" height="700" frameborder="2" scrolling="no" src="https://1drv.ms/x/c/7413787cefd7dd8b/IQQHojiVklqHS4MdAunuMfn7AcaTi3X3xg2NidJZ7TvC3l4?em=2&wdAllowInteractivity=False&Item='Sheet1'!B2%3ACZ40&wdInConfigurator=True&wdInConfigurator=True"></iframe>
 
 ## Contribution
 
