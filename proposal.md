@@ -13,19 +13,17 @@ Accurate classification of cancer types based on RNA-sequencing data is a crucia
 Our dataset contains gene expression profiles of 6 types of cancers abbreviated as BLCA, CESC, HNSC, KIRC, and LGG. There are 6 files, one for each type of cancer totalling about 1.1 Gb of raw counts data. The data for each file is present in Sample x Genes format with 2,952 data points (patient samples) and 20,531 features (genes) in total. The values represent the counts of each gene in the sample after alignment with a reference transcriptome. 
 
 ### Dataset link
-[Main dataset](http://zenodo.org/records/8192916)
-
-[Backup dataset](https://archive.ics.uci.edu/dataset/401/gene+expression+cancer+rna+seq)
+[Dataset](http://zenodo.org/records/8192916)
 
 
 ## Problem Definition
 
 ### Problem
-Diagnosing cancer and classifying it into the correct subtype from samples collected from patients is crucial in effectively treating cancer. To aid this time-sensitive task, we propose to apply ML techniques for accurately categorizing cancer types by analyzing expression levels of cancer type-specific *signature* genes as a supplementary tool for the clinicians to speed up diagnosis procedure.
+Diagnosing cancer and correct subtype classification from samples collected from patients is crucial in effectively treating cancer. To aid this time-sensitive task, we propose to apply ML techniques for accurately categorizing cancer types by analyzing expression levels of cancer type-specific *signature* genes as a supplementary tool for the clinicians to accelerate diagnosis procedure.
 
 
 ### Motivation
-Humans have 20,000 protein-coding genes. Using manual techniques to identify genes that are differentially expressed(DE) between different conditions is impractical, necessitating the use of sophisticated models to churn this very-high dimensional data. Moreover, identification of DE genes is an important step in bioinformatics pipelines for further downstream analyses.
+Humans have ~20,000 protein-coding genes. Using manual techniques to identify genes that are differentially expressed(DE) among conditions is impractical, necessitating the use of sophisticated models to churn this very-high dimensional data. Moreover, DE gene identification is an important step in bioinformatics pipelines for downstream analyses.
 
 
 ## Methods
@@ -61,7 +59,7 @@ Categorization can be easily visualized using dendrograms, which will allow us t
 This project aims to improve the diagnostic accuracy and potentially discover novel patient subclusters within cancer types to develop personalized treatments of cancer patients. Sustainable and ethical considerations include avoiding algorithmic bias, and ensuring model transparency. 
 
 ### Expected Results
-As we have data from 6 types of cancers, we expect to see 6 distinct clusters and reasonable accuracy, F1, AUC/ROC for prediction. We expect to have a F1 greater than 0.85 and AUROC greater than 0.9 that match previous attempts to cluster similar datasets. Moreover, we want to create expression signatures by finding the genes that represent a cluster to enable targeted sequencing to only sequence a smaller set of genes. This would allow for faster and cheaper processing times to classify a patient’s cancer type in the clinic. 
+As we have data from 6 types of cancers, we expect to see 6 distinct clusters and reasonable accuracy, F1(>0.85), AUC/ROC(>0.9) for prediction. Moreover, we want to create expression signatures by finding the genes that represent a cluster to enable targeted sequencing to only sequence a smaller set of genes allowing for faster and cheaper processing times to classify a patient’s cancer type in the clinic. 
 
 ## Video
 {% include youtube.html id="AfDw644U36A" %}
