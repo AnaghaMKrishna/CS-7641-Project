@@ -51,10 +51,10 @@ Categorization can be easily visualized using dendrograms, which will allow us t
 ## Results and Discussion
 
 ### Quantitative Metrics 
-* **Micro F1** - It will provide a balanced measure of precision and recall as both false positives and false negatives can have serious consequences in cancer diagnosis.
-* **One-vs-Rest multiclass ROC** - plots the True Positive Rate  against the False Positive Rate at different thresholds and will help us understand which cancer types are most easily discriminated against.
-* **Silhouette Coefficient** - It combines information about cohesion and separation and will help determine if the clusters discovered actually correspond to different cancer types.
-* **Balanced Accuracy** - It is an arithmetic mean of sensitivity and specificity and will give equal weight to each cancer type.
+* **Micro F1**
+* **One-vs-Rest multiclass ROC**
+* **Silhouette Coefficient**
+* **Balanced Accuracy**
 
 
 ### Project goals
