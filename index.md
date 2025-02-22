@@ -15,6 +15,8 @@ Machine learning approaches have become indispensable in the analysis of RNA-seq
 
 ## Further fascinating discoveries to come!
 
+We wish to opt-in for being considered for the outstanding project award.
+
 ## Group 55 Team Members
 
 1. Hina Gaur
