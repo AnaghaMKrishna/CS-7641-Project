@@ -12,9 +12,7 @@ Accurate classification of cancer types based on RNA-sequencing data is a crucia
 ### Dataset Description
 Our dataset contains 6 files containing gene expression profiles of 6 cancer types, present in sample x genes format with 2,952 patient samples and 20,531 genes. The values represent the counts of gene products in the sample.
 
-
-### Dataset link
-[Dataset](http://zenodo.org/records/8192916)[4][5]
+[Dataset link](http://zenodo.org/records/8192916)[4][5]
 
 
 ## Problem Definition
@@ -32,7 +30,7 @@ Humans have ~20,000 protein-coding genes. Using manual techniques to identify di
 ### Data Preprocessing methods
 * **Merging datasets**: Combine datasets based on common features, removing columns with no matching genes.
 * **PCA**: Reduces dimensionality in RNA expression data, preventing overfitting and redundancy.
-* **Normalization**: Ensures all RNA expression types are on the same scale.
+* **Normalization**: Ensures all gene counts are on the same scale.
 * **Data Imputation**: Fills in missing values to maintain dataset robustness.
 
 
@@ -40,7 +38,7 @@ Humans have ~20,000 protein-coding genes. Using manual techniques to identify di
 * **Supervised**: 
   * **Random Forest**: Excels with high-dimensional data, identifies key genes via Gini and Permutation Importance, and reduces dimensionality by selecting relevant biomarkers, improving model performance.
 * **Unsupervised**:
-  * **GMM clustering**: Calculates responsibility matrix to give a probability of how much a particular gene expression matches up to all the  various cancer subtypes (which could each be their own gaussian clusters).
+  * **GMM clustering**: Calculates responsibility matrix to give a probability of how much a particular gene expression matches up to all the various cancer subtypes (which could each be their own gaussian clusters).
   * **Hierarchical clustering**: A good hard clustering technique because cancer subtypes can be categorized both generally and specifically. 
 Categorization can be easily visualized using dendrograms, which allow us to see similarities in gene expression at various spectrums.
 * **Deep Learning**:
@@ -57,10 +55,10 @@ Categorization can be easily visualized using dendrograms, which allow us to see
 
 
 ### Project goals
-This project aims to improve the diagnostic accuracy and potentially discover novel patient subclusters within cancer types to develop personalized treatments of cancer patients. Sustainable and ethical considerations include avoiding algorithmic bias, and ensuring model transparency. 
+This project aims to improve the diagnostic accuracy and potentially discover novel subclusters within cancer types to develop personalized treatments for patients. Sustainable and ethical considerations include avoiding algorithmic bias, and ensuring model transparency. 
 
 ### Expected Results
-As we have data from 6 types of cancers, we expect to see 6 distinct clusters and reasonable accuracy, F1(>0.85), AUC/ROC(>0.9) for prediction. We want to create expression signatures by finding the genes that represent a cluster to enable targeted sequencing to only sequence a smaller set of genes for faster and cheaper processing times to classify cancer type in the clinic. 
+As we have data from 6 types of cancers, we expect to see 6 distinct clusters and reasonable accuracy, F1(>0.85), AUC/ROC(>0.9) for prediction. We want to create expression signatures by finding the genes that represent a cluster to enable targeted sequencing of smaller set of genes for faster and cheaper processing times to classify cancer type in the clinic. 
 
 ## Video
 {% include youtube.html id="AfDw644U36A" %}
