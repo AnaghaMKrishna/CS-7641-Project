@@ -7,13 +7,14 @@ layout: default
 ## Introduction
 
 ### Literature Review
-Accurate classification of cancer types based on RNA-sequencing data is a crucial task in computational oncology, with significant implications for diagnosis. The goal of this project is to use supervised and unsupervised machine learning methods to predict the type of cancer for patients based on RNA-sequencing data. This sort of classification is essential in the clinic to support and validate histology and will help guide the course of treatment for patients with cancer. Previous studies have laid a strong groundwork for us to expand upon. Jaskowiak et al. compared 4 clustering methods and 12 distance measures and concluded that k-medoids and hierarchical clustering with average linkage were in general superior over hierarchical clustering with complete or single linkage[1]. Moreover, Freyhult et al. pinpointed that the preprocessing steps in using RNAseq data can have a major influence over the performance. Since we are working with high dimensional data, we aim to test multiple feature reduction techniques such as those employed by David Kallberg’s group in an analysis of 11 feature reduction techniques on high dimensional cancer data[2].
+Accurate classification of cancer types based on RNA-sequencing data is a crucial task in computational oncology, with significant implications for diagnosis. Our goal is to use ML to predict the type of cancer based on RNA-sequencing data. This classification is essential in the clinic to support and validate histology and will help guide the treatment for patients. Previous studies have laid a strong groundwork for us to expand upon. Jaskowiak et al. compared 4 clustering methods and 12 distance measures and concluded that k-medoids and hierarchical clustering with average linkage were superior over complete or single linkage[1]. Moreover, Freyhult et al. pinpointed that the preprocessing steps in using RNAseq data can majorly influence the performance[2]. Since we are working with high dimensional data, we aim to test multiple feature reduction techniques like those employed by David Kallberg’s group analyzing 11 such techniques[3].
 
 ### Dataset Description
-Our dataset contains gene expression profiles of 6 types of cancers abbreviated as BLCA, CESC, HNSC, KIRC, and LGG. There are 6 files, one for each type of cancer totalling about 1.1 Gb of raw counts data. The data for each file is present in Sample x Genes format with 2,952 data points (patient samples) and 20,531 features (genes) in total. The values represent the counts of each gene in the sample after alignment with a reference transcriptome. 
+Our dataset contains 6 files containing gene expression profiles of 6 cancer types, present in sample x genes format with 2,952 patient samples and 20,531 genes. The values represent the counts of gene products in the sample.
+
 
 ### Dataset link
-[Dataset](http://zenodo.org/records/8192916)
+[Dataset](http://zenodo.org/records/8192916)[4][5]
 
 
 ## Problem Definition
@@ -23,7 +24,7 @@ Diagnosing cancer and correct subtype classification from samples collected from
 
 
 ### Motivation
-Humans have ~20,000 protein-coding genes. Using manual techniques to identify genes that are differentially expressed(DE) among conditions is impractical, necessitating the use of sophisticated models to churn this very-high dimensional data. Moreover, DE gene identification is an important step in bioinformatics pipelines for downstream analyses.
+Humans have ~20,000 protein-coding genes. Using manual techniques to identify differentially expressed(DE) genes among conditions is impractical, necessitating the use of sophisticated models to churn this very-high dimensional data. Moreover, DE gene identification is an important step in bioinformatics pipelines for downstream analyses.
 
 
 ## Methods
@@ -37,11 +38,11 @@ Humans have ~20,000 protein-coding genes. Using manual techniques to identify ge
 
 ### ML Models
 * **Supervised**: 
-  * **Random Forest**: Excels with high-dimensional data, identifies key genes via Gini and Permutation Importance, and reduces dimensionality by     selecting relevant biomarkers, improving model performance.
+  * **Random Forest**: Excels with high-dimensional data, identifies key genes via Gini and Permutation Importance, and reduces dimensionality by selecting relevant biomarkers, improving model performance.
 * **Unsupervised**:
-  * **GMM clustering**: Can calculate responsibility matrix to give a probability of how much a particular gene expression matches up to all the  various cancer subtypes (which could each be their own gaussian clusters).
+  * **GMM clustering**: Calculates responsibility matrix to give a probability of how much a particular gene expression matches up to all the  various cancer subtypes (which could each be their own gaussian clusters).
   * **Hierarchical clustering**: A good hard clustering technique because cancer subtypes can be categorized both generally and specifically. 
-Categorization can be easily visualized using dendrograms, which will allow us to see similarities in gene expression at various spectrums.
+Categorization can be easily visualized using dendrograms, which allow us to see similarities in gene expression at various spectrums.
 * **Deep Learning**:
   * **Neural Networks**: Captures non-linear gene relationships, automatically extracts key features, and scales well with architectures like CNNs or autoencoders. Regularization techniques like dropout and batch normalization prevent overfitting and handle noisy data, making them highly effective for cancer classification.
 
@@ -59,7 +60,7 @@ Categorization can be easily visualized using dendrograms, which will allow us t
 This project aims to improve the diagnostic accuracy and potentially discover novel patient subclusters within cancer types to develop personalized treatments of cancer patients. Sustainable and ethical considerations include avoiding algorithmic bias, and ensuring model transparency. 
 
 ### Expected Results
-As we have data from 6 types of cancers, we expect to see 6 distinct clusters and reasonable accuracy, F1(>0.85), AUC/ROC(>0.9) for prediction. Moreover, we want to create expression signatures by finding the genes that represent a cluster to enable targeted sequencing to only sequence a smaller set of genes allowing for faster and cheaper processing times to classify a patient’s cancer type in the clinic. 
+As we have data from 6 types of cancers, we expect to see 6 distinct clusters and reasonable accuracy, F1(>0.85), AUC/ROC(>0.9) for prediction. We want to create expression signatures by finding the genes that represent a cluster to enable targeted sequencing to only sequence a smaller set of genes for faster and cheaper processing times to classify cancer type in the clinic. 
 
 ## Video
 {% include youtube.html id="AfDw644U36A" %}
@@ -84,10 +85,10 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 ## References
 
 1. L. Vidman, D. Källberg, and P. Rydén, “Cluster analysis on high dimensional RNA-seq data with applications to cancer research - An evaluation study,” PLOS ONE, vol. 14, no. 12, p. e0219102, Dec. 2019, doi: https://doi.org/10.1371/journal.pone.0219102.
-2. ‌D. Källberg, L. Vidman, and Patrik Rydén, “Comparison of Methods for Feature Selection in Clustering of High-Dimensional RNA-Sequencing Data to Identify Cancer Subtypes,” Frontiers in Genetics, vol. 12, Feb. 2021, doi: https://doi.org/10.3389/fgene.2021.632620.
-3. M. J. Goldman et al., “Visualizing and interpreting cancer genomics data via the Xena platform,” Nature Biotechnology, vol. 38, no. 6, pp. 675–678, May 2020, doi: https://doi.org/10.1038/s41587-020-0546-8.
-4. J. N. Weinstein et al., “The Cancer Genome Atlas Pan-Cancer analysis project,” Nature Genetics, vol. 45, no. 10, pp. 1113–1120, Sep. 2013, doi: https://doi.org/10.1038/ng.2764.
-5. GeeksforGeeks, “F1 Score in Machine Learning,” GeeksforGeeks, Dec. 27, 2023. https://www.geeksforgeeks.org/f1-score-in-machine-learning/
-
+2. ‌E. Freyhult, M. Landfors, J. Önskog, T. R. Hvidsten, and P. Rydén, “Challenges in microarray class discovery: a comprehensive examination of normalization, gene selection and clustering,” BMC Bioinformatics, vol. 11, no. 1, Oct. 2010, doi: https://doi.org/10.1186/1471-2105-11-503.
+3. D. Källberg, L. Vidman, and Patrik Rydén, “Comparison of Methods for Feature Selection in Clustering of High-Dimensional RNA-Sequencing Data to Identify Cancer Subtypes,” Frontiers in Genetics, vol. 12, Feb. 2021, doi: https://doi.org/10.3389/fgene.2021.632620.
+4. M. J. Goldman et al., “Visualizing and interpreting cancer genomics data via the Xena platform,” Nature Biotechnology, vol. 38, no. 6, pp. 675–678, May 2020, doi: https://doi.org/10.1038/s41587-020-0546-8.
+5. J. N. Weinstein et al., “The Cancer Genome Atlas Pan-Cancer analysis project,” Nature Genetics, vol. 45, no. 10, pp. 1113–1120, Sep. 2013, doi: https://doi.org/10.1038/ng.2764.
+6. GeeksforGeeks, “F1 Score in Machine Learning,” GeeksforGeeks, Dec. 27, 2023. https://www.geeksforgeeks.org/f1-score-in-machine-learning/
 
 [Back to home](./)
