@@ -115,3 +115,40 @@ Our SVM Classifier trained on top 5000 highly variable genes performed quite wel
 
 ![DBSCAN](Figures/DBScan.png)
 
+##### We used the following metrics to measure the performance of DBscan:
+
+#### a.Silhouette coefficient
+ 
+ Silhouette score combines information about cohesion and separation and will help determine if the clusters discovered actually correspond to different cancer types.  Our DBScan model produced a silhouette score of 0.68713. Silhouette scores range from -1 to 1, with values closer to 1 indicating well-defined, distinct clusters. A score of 0.68713 suggests that the clusters have fairly good separation and cohesion, meaning the clustering captures a lot of the structure in the data.
+
+#### b. Number of Clusters
+
+Our DBScan model was only able to produce two clusters even though we expected six clusters, one for each cancer subtype. This indicates that the data does not naturally cluster into the 6 categories as we would have hoped.
+
+Our visualization and metrics suggest that while our dimensionality reduction using PCA was successful, retaining 89.91% of the dataset's variance with just 10 components, the clustering results from the GMM and DBSCAN models were less effective than expected. Despite aiming to classify the data into six cancer types, the model only formed two clusters, with a silhouette score of 0.68713, indicating fairly good cluster separation, though not with the number of clusters we would have liked to see. An explained variance such as this may highlight the issue of redundancy. Redundancy in the high-dimensional gene expression data may have obscured distinct cluster boundaries. This redundancy, combined with potential overlap in gene expression profiles across cancer types, likely contributed to the model’s limited performance. Our next steps include exploring alternative feature selection to reduce redundancy and experimenting with different clustering methods or parameter tuning to better capture the underlying structure of the data.
+
+## Next Steps
+
+For the next steps, we plan on doing several things - We want to look at alternate unsupervised clustering algorithms that provide better clustering than DBscan. Moreover, we want to explore other complex architectures such as Deep Neural Networks to see if we can surpass the accuracy of our SVM model. We also want our model to aid diagnosticians in identifying features of high importance that can be used to discriminate between cancer types. To do this we want to create gene signatures that define each cluster such that we do not need to test the entire genome to classify the type of cancer, but instead use only a small fraction of them in the form of a panel, saving crucial time and resources.
+
+## Contribution
+
+| Name       | Proposal Contributions|        
+|:-------------|:------------------|
+| Hina Gaur          | Results and Discussion, References, Video recording and content | 
+| Anagha Mohana Krishna  | Problem Definition, Gantt chart, Video slide deck, GitHub pages |
+| Mridul Anand           | Introduction, Results and Discussion, References, Video script  | 
+| Ani Vedartham | Methods, References, GitHub pages |
+| Vedu Arya | Methods, References, GitHub pages  |
+
+## References
+
+1. L. Vidman, D. Källberg, and P. Rydén, “Cluster analysis on high dimensional RNA-seq data with applications to cancer research - An evaluation study,” PLOS ONE, vol. 14, no. 12, p. e0219102, Dec. 2019, doi: https://doi.org/10.1371/journal.pone.0219102.
+2. ‌E. Freyhult, M. Landfors, J. Önskog, T. R. Hvidsten, and P. Rydén, “Challenges in microarray class discovery: a comprehensive examination of normalization, gene selection and clustering,” BMC Bioinformatics, vol. 11, no. 1, Oct. 2010, doi: https://doi.org/10.1186/1471-2105-11-503.
+3. D. Källberg, L. Vidman, and Patrik Rydén, “Comparison of Methods for Feature Selection in Clustering of High-Dimensional RNA-Sequencing Data to Identify Cancer Subtypes,” Frontiers in Genetics, vol. 12, Feb. 2021, doi: https://doi.org/10.3389/fgene.2021.632620.
+4. M. J. Goldman et al., “Visualizing and interpreting cancer genomics data via the Xena platform,” Nature Biotechnology, vol. 38, no. 6, pp. 675–678, May 2020, doi: https://doi.org/10.1038/s41587-020-0546-8.
+5. J. N. Weinstein et al., “The Cancer Genome Atlas Pan-Cancer analysis project,” Nature Genetics, vol. 45, no. 10, pp. 1113–1120, Sep. 2013, doi: https://doi.org/10.1038/ng.2764.
+6. GeeksforGeeks, “F1 Score in Machine Learning,” GeeksforGeeks, Dec. 27, 2023. https://www.geeksforgeeks.org/f1-score-in-machine-learning/
+
+[Back to home](./)
+
