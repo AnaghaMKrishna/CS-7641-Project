@@ -109,7 +109,7 @@ We also looked at using different hyperparameters to assess the best F1 Score -
 
   ![Variable Genes](Figures/SVM_Genes.png)
 
-### Support Vector Machine
+### DBSCAN
 
 We used the following metrics to measure the performance of DBSCAN:
 
