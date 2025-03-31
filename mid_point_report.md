@@ -93,7 +93,7 @@ Our SVM Classifier trained on top 5000 highly variable genes performed quite wel
 #### d. Balanced Accuracy
  Balanced Accuracy represents the arithmetic mean of sensitivity and specificity and will give equal weight to each cancer type. In our SVM model, we got a balanced accuracy score of 94.50% which is a strong score for our classification model
 
-We also looked at using different hyperparameters to assess the best F1 Score
+##### We also looked at using different hyperparameters to assess the best F1 Score
 
 #### A. Regularisation
 
@@ -106,3 +106,12 @@ We also looked at using different hyperparameters to assess the best F1 Score
  We also looked at the SVM classifier performance across different numbers of highly variable genes. The graph below plots Accuracy (blue line) and F1 Score (orange line) against the number of HVGs. Both metrics show a consistent upward trend as the number of HVGs increases, with significant improvement observed from 1000 to 2000 HVGs. Beyond 4000 HVGs, the metrics continue to rise but at a slower rate, indicating smaller returns on performance gains with additional genes. We decided to use 5000 genes in our final model as it produced an adequate classification accuracy with an acceptable runtime. 
 
   ![Variable Genes](Figures/SVM_Genes.png)
+
+  ## Analysis 
+
+  Overall the support vector machine model trained on our dataset using the top 5000 highly variable genes showed exceptional accuracy in classifying the cancer subtypes. As demonstrated by the Confusion Matrix, the model can correctly discriminate between the cancer types for all the classes while having a minimal number of misclassifications. The Area Under Curve values for all the classes lie between 0.98-1.00 which demonstrates almost perfect classification by the model. We believe that the success of the model relied upon focusing on the top 5,000 highly variable genes which effectively filtered biological noise while retaining critical biomarkers that the radial basis function kernel was able to utilize to learn the complex relation.	
+
+  Our DBscan clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset. In choosing epsilon for our DBScan, we decided to leverage the elbow effect and plotted the distance of the 4th nearest neighbor vs the points. As can be seen, the ideal epsilon that we decided to select was 25 as that is around where the elbow of the graph is formed. Points below this threshold are more likely to be a part of clusters and points above are more likely to be outliers. 
+
+![DBSCAN](Figures/DBScan Epsilon Elbow Graph.png)
+
