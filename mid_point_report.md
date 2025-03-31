@@ -81,3 +81,5 @@ Our SVM Classifier trained on top 5000 highly variable genes performed quite wel
 #### b. Confusion Matrix
 
  Confusion Matrix illustrates the classification model's performance in predicting six cancer types. The diagonal values represent correct predictions, while off-diagonal values indicate misclassifications. The model demonstrates high accuracy, with minimal errors across all classes as shown below.
+
+ ![Confusion mat](Figures/Confusion_Metrix.png)
