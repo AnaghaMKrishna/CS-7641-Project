@@ -38,3 +38,7 @@ The Barplot below shows the number of samples in each class type before and afte
 
 #### After SMOTE
 ![After SMOTE](Figures/Bar_aft_Smote.png)
+
+#### c. Data Normalisation
+As our data was already Z-score normalized (with the mean value = 0 and standard deviation = 1 for each gene), we did not need to do any additional normalization step. This is done to understand the relative expression levels of genes across samples without being influenced by differences in absolute expression levels or dynamic ranges. The figure below shows the distribution of z-score normalized counts in our final merged dataset for a random gene. We observe the mean as 0 and a standard deviation of 1 as the data has been z-score normalized.
+![Z-score plot](Figures/z_score_plot.png)
