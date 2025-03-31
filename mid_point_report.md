@@ -113,5 +113,5 @@ Our SVM Classifier trained on top 5000 highly variable genes performed quite wel
 
   Our DBscan clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset. In choosing epsilon for our DBScan, we decided to leverage the elbow effect and plotted the distance of the 4th nearest neighbor vs the points. As can be seen, the ideal epsilon that we decided to select was 25 as that is around where the elbow of the graph is formed. Points below this threshold are more likely to be a part of clusters and points above are more likely to be outliers. 
 
-![DBSCAN](Figures/`DBScan Epsilon Elbow Graph.png`)
+![DBSCAN](Figures/DBScan.png)
 
