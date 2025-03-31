@@ -6,12 +6,12 @@ Machine learning approaches have become indispensable in the analysis of RNAseq 
 
 Check out our [Website](https://github.gatech.edu/pages/ML7641-Group55/CS-7641-Project/)
 
-What to looks for:
+What to look for:
 
 - ./proposal.md - Project proposal
 - ./midpoint_submission - all files related to midpoint submission
     - ./midpoint_submission/code - Jupyter notbook and Python script for SVC and DBSCAN implementation
     - ./midpoint_submission/Figures - all the visualizations used in the report
-    - ./midpoint_submission/mid_point_report.md - report elaborating our implementation, analysis and results
+    - ./midpoint_submission/mid_point_report.md - report elaborating our model, analysis and results
 
 
