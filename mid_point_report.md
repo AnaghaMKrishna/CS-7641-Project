@@ -92,3 +92,17 @@ Our SVM Classifier trained on top 5000 highly variable genes performed quite wel
 
 #### d. Balanced Accuracy
  Balanced Accuracy represents the arithmetic mean of sensitivity and specificity and will give equal weight to each cancer type. In our SVM model, we got a balanced accuracy score of 94.50% which is a strong score for our classification model
+
+We also looked at using different hyperparameters to assess the best F1 Score
+
+#### A. Regularisation
+
+ We looked at the performance of the SVM classifier with varying regularization parameter C using 5000 highly variable genes. The graph below plots Accuracy (blue line) and F1 Score (orange line) against C values. Both metrics improve significantly as C increases, indicating better model performance with reduced regularization. Beyond C = 10^0, the metrics plateau, which suggests further increases in C provide diminishing returns in performance. 
+
+ ![Variable C](Figures/SVM_C.png)
+
+#### B. Highly Variable Genes
+
+ We also looked at the SVM classifier performance across different numbers of highly variable genes. The graph below plots Accuracy (blue line) and F1 Score (orange line) against the number of HVGs. Both metrics show a consistent upward trend as the number of HVGs increases, with significant improvement observed from 1000 to 2000 HVGs. Beyond 4000 HVGs, the metrics continue to rise but at a slower rate, indicating smaller returns on performance gains with additional genes. We decided to use 5000 genes in our final model as it produced an adequate classification accuracy with an acceptable runtime. 
+
+  ![Variable Genes](Figures/SVM_Genes.png)
