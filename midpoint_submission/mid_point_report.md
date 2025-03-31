@@ -135,7 +135,7 @@ For the next steps, we plan on doing several things - We want to look at alterna
 
 | Name       | Proposal Contributions|        
 |:-------------|:------------------|
-| Hina Gaur          | Results and Discussion, References, Video recording and content | 
+| Hina Gaur          |  | 
 | Anagha Mohana Krishna  | Problem Definition, Gantt chart, Video slide deck, GitHub pages |
 | Mridul Anand           | Introduction, Results and Discussion, References, Video script  | 
 | Ani Vedartham | Methods, References, GitHub pages |
