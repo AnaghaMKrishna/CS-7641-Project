@@ -41,4 +41,14 @@ The Barplot below shows the number of samples in each class type before and afte
 
 #### c. Data Normalisation
 As our data was already Z-score normalized (with the mean value = 0 and standard deviation = 1 for each gene), we did not need to do any additional normalization step. This is done to understand the relative expression levels of genes across samples without being influenced by differences in absolute expression levels or dynamic ranges. The figure below shows the distribution of z-score normalized counts in our final merged dataset for a random gene. We observe the mean as 0 and a standard deviation of 1 as the data has been z-score normalized.
+
 ![Z-score plot](Figures/z_score_plot.png)
+
+#### d. Data Imputation and QC
+During exploratory data QC, we did not encounter any major problems with the datasets in terms of missing observations, or extreme outliers. 
+
+#### e. Feature Engineering and Dimensionality Reduction
+A common step in RNAseq analyses is to find highly variable genes. Typically, the top 1000-10000 highly variable genes are used for downstream analyses. As these genes represent the most variable components across different classes, they are ideal for training our model. We tested the use of multiple numbers of highly variable genes and decided to use 5000 genes for our analysis as it provided us with great accuracy while maintaining acceptable runtimes.
+We applied principal component analysis to the dataset. It works by transforming high-dimensional data into a lower-dimensional space while maximizing the variance of the data in the new space. Below is the plot of the first two principal components from the PCA calculations. As expected, given the variance explained by each PC is very low, we don't see any clear clustering with PCA. 
+
+![PCA plot](Figures/PCA_plot.png)
