@@ -74,7 +74,7 @@ In the validation dataset, we found, there are 6 cancer subtypes that the sample
 
 Our SVM Classifier trained on top 5000 highly variable genes performed quite well with a mean accuracy of 0.95 across all the classes. We looked at several metrics to determine the performance of this model:
 
-#### a.Macro F1
+#### a. Macro F1
 
  Macro F1 provides a balanced measure of precision and recall as both false positives and false negatives can have serious consequences in cancer diagnosis. This score also makes sure that no single cancer type dominates the model’s performance and that it can be generalized across the dataset. The SVM model achieved an impressive Macro F1 score of 0.9453, reflecting its strong overall performance across all classes.
 
@@ -115,7 +115,7 @@ Our SVM Classifier trained on top 5000 highly variable genes performed quite wel
 
 ![DBSCAN](Figures/DBScan.png)
 
-##### We used the following metrics to measure the performance of DBscan:
+#### We used the following metrics to measure the performance of DBscan:
 
 #### a.Silhouette coefficient
  
@@ -131,7 +131,7 @@ Our visualization and metrics suggest that while our dimensionality reduction us
 
 For the next steps, we plan on doing several things - We want to look at alternate unsupervised clustering algorithms that provide better clustering than DBscan. Moreover, we want to explore other complex architectures such as Deep Neural Networks to see if we can surpass the accuracy of our SVM model. We also want our model to aid diagnosticians in identifying features of high importance that can be used to discriminate between cancer types. To do this we want to create gene signatures that define each cluster such that we do not need to test the entire genome to classify the type of cancer, but instead use only a small fraction of them in the form of a panel, saving crucial time and resources.
 
-## Contribution
+## Contributions
 
 | Name       | Proposal Contributions|        
 |:-------------|:------------------|
