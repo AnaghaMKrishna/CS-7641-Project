@@ -33,5 +33,8 @@ We wanted to ensure that all the datasets we used had expression values present 
 As there was an imbalance in the number of observations between classes, we decided to use the SMOTE algorithm (Synthetic Minority Oversampling Technique) which synthetically created data points for under-represented classes. This was done to avoid the model being biased towards over-represented data. Upon using SMOTE, we balanced the classes such that each class now had 606 data points.
 The Barplot below shows the number of samples in each class type before and after using SMOTE.
 
-#### Before 
+#### Before SMOTE
 ![Before SMOTE](Figures/Bar_bef_Smote.png)
+
+#### After SMOTE
+![After SMOTE](Figures/Bar_aft_Smote.png)
