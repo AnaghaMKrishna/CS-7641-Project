@@ -149,7 +149,7 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 |:-------------|:------------------|
 | Hina Gaur          | SVM model explanation in report, Result and Discussion, QC metrics  | 
 | Anagha Mohana Krishna  | SVC code implementation, evaluation and finetuning, updated webpage |
-| Mridul Anand           |  | 
+| Mridul Anand           | Data Preprocessing Methods, Results and Discussion, Next Steps, Report Formatting | 
 | Ani Vedartham | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics |
 | Vedu Arya | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics   |
 
