@@ -1,5 +1,7 @@
 title: Applying ML Techniques to Identify Cancer Types
 description: Classify and predict cancer types based on gene expression levels
 show_downloads: false
+collections:
+  - midpoint_submission
 google_analytics:
 theme: jekyll-theme-cayman

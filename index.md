@@ -13,7 +13,8 @@ Machine learning approaches have become indispensable in the analysis of RNA-seq
 ## Project Proposal
 [Find our project proposal here](./proposal.html).
 
-## Further fascinating discoveries to come!
+## View our progress
+[Find our midpoint report with our analysis and results here](./midpoint_submission/mid_point_report.html).
 
 We wish to opt-in for being considered for the outstanding project award.
 

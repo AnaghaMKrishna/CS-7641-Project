@@ -5,3 +5,13 @@ RNA sequencing (RNAseq) has revolutionized cancer research by providing valuable
 Machine learning approaches have become indispensable in the analysis of RNAseq data due to the volume and complexity of the data generated. Traditional methods fail to handle and make sense of such multidimensional data, where thousands of genes and their expressions need to be analyzed. ML algorithms are powerful tools to identify patterns within RNAseq data that are indicative of different cancer types and subtypes. By integrating supporting data like clinical information, these algorithms aids in improving the accuracy of cancer classification. These insights are critical for enhancing our understanding of cancer biology and for development of effective, personalized medicine.
 
 Check out our [Website](https://github.gatech.edu/pages/ML7641-Group55/CS-7641-Project/)
+
+What to looks for:
+
+- ./proposal.md - Project proposal
+- ./midpoint_submission - all files related to midpoint submission
+    - ./midpoint_submission/code - Jupyter notbook and Python script for SVC and DBSCAN implementation
+    - ./midpoint_submission/Figures - all the visualizations used in the report
+    - ./midpoint_submission/mid_point_report.md - report elaborating our implementation, analysis and results
+
+
