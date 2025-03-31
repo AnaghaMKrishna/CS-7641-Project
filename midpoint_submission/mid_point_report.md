@@ -117,7 +117,7 @@ Our SVM Classifier trained on top 5000 highly variable genes performed quite wel
 
 #### We used the following metrics to measure the performance of DBscan:
 
-#### a.Silhouette coefficient
+#### a. Silhouette coefficient
  
  Silhouette score combines information about cohesion and separation and will help determine if the clusters discovered actually correspond to different cancer types.  Our DBScan model produced a silhouette score of 0.68713. Silhouette scores range from -1 to 1, with values closer to 1 indicating well-defined, distinct clusters. A score of 0.68713 suggests that the clusters have fairly good separation and cohesion, meaning the clustering captures a lot of the structure in the data.
 
