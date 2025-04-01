@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+# Mid Term Project Proposal 
 # Introduction  
 
 ## Literature Review  
