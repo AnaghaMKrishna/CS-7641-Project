@@ -9,6 +9,7 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.neighbors import NearestNeighbors
 from sklearn.utils import resample
+from sklearn.manifold import TSNE
 
 download_dir = os.path.expanduser('~/Downloads')
 feature_dataset = os.path.join(download_dir, 'features.csv')
@@ -73,6 +74,28 @@ print("Output:\n")
 print("Final Epsilon: " + str(epsilon))
 print("Final Clusters: " + str(final_clusters))
 print("Final Silhouette Score: " + str(sil_score_best))
+
+tsne_model = TSNE(n_components=2, random_state=42)
+tsne_transformed_data = tsne_model.fit_transform(feature_selected_data)
+x_1 = tsne_transformed_data[:, 0]
+x_2 = tsne_transformed_data[:, 1]
+
+seperation_constant = 0.6
+scatter = plt.scatter(x_1, x_2, c=predictions, cmap='viridis', alpha=seperation_constant)
+plt.colorbar(scatter, label='Cluster')
+plt.title('DBSCAN Clustering Results (t-SNE Visualization)')
+plt.xlabel('t-SNE Component 1')
+plt.ylabel('t-SNE Component 2')
+plt.savefig('DBScan_Cluster_Visualization.png')
+plt.close()
+
+unique_predictions = np.unique(predictions)
+for i in unique_predictions:
+    if i != -1:
+        print("Cluster " + str(i) + ": " + str(np.sum(predictions == i)) + " points")
+        continue 
+    print("Noise points: " + str(np.sum(predictions == i)))
+        
 
 
 
