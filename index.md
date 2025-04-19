@@ -16,6 +16,9 @@ Machine learning approaches have become indispensable in the analysis of RNA-seq
 ## View our progress
 [Find our midpoint report with our analysis and results here](./midpoint_submission/mid_point_report.html).
 
+## View our results
+[Find our comprehensive project report with 3+ models and their performance here](./Final_Submission/final_report.html)
+
 We wish to opt-in for being considered for the outstanding project award.
 
 ## Group 55 Team Members

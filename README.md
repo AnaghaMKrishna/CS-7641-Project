@@ -8,10 +8,17 @@ Check out our [Website](https://github.gatech.edu/pages/ML7641-Group55/CS-7641-P
 
 What to look for:
 
+Midpoint Submission -
 - ./proposal.md - Project proposal
 - ./midpoint_submission - all files related to midpoint submission
     - ./midpoint_submission/code - Jupyter notbook and Python script for SVC and DBSCAN implementation
-    - ./midpoint_submission/Figures - all the visualizations used in the report
+    - ./midpoint_submission/Figures - all the visualizations shown in the report
     - ./midpoint_submission/mid_point_report.md - report elaborating our model, analysis and results
 
+Final Submission -
+- ./proposal.md - Project proposal
+- ./Final_Submission - all files related to midpoint submission
+    - ./Final_Submission/code - Jupyter notbook and Python scripts for all model implementations and evaluations
+    - ./Final_Submission/Figures - all the visualizations shown in the report
+    - ./Final_Submission/final_report.md - detailed report elaborating our model, analysis and results
 

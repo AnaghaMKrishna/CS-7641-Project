@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Final Project Report
 # Introduction  
 
@@ -61,8 +65,8 @@ We chose to implement a Support Vector Machine for the cancer classification tas
 
 Moreover, SVM is robust to overfitting as it uses a regularization parameter (C), which helps it to generalize well on new or unseen data. Furthermore, compared to other complex model architectures, SVMs requires less time and computational resources, which makes it feasible to use for real-time cancer diagnostic applications. Overall, by implementing SVM with an RBF kernel, we leverage its strengths in handling high-dimensional and complex biological data while ensuring robustness and generalizability for diagnostic applications.
 
-#### DBscan (Unsupervised)
-In the validation dataset, we found, there are 6 cancer subtypes that the samples were categorized into. Realizing this, we wanted to see if the gene expression data for these samples would naturally cluster into 6 categories. We chose DBscan as our clustering algorithm because, unlike other techniques, it does not require specifying the number of clusters beforehand. Instead, the algorithm determines the number of clusters based on the data itself. Our goal was to see if applying DBSCAN would naturally result in six clusters corresponding to our cancer subtypes. DBScan is also very good for noise detection, which was another reason to use this algorithm. Given, there are around 3000 samples, each with 11,000+ gene expression features, we knew that there would likely be some biological noise that needed to be filtered out and that DBScan could help with this. 
+#### DBSCAN (Unsupervised)
+In the validation dataset, we found, there are 6 cancer subtypes that the samples were categorized into. Realizing this, we wanted to see if the gene expression data for these samples would naturally cluster into 6 categories. We chose DBSCAN as our clustering algorithm because, unlike other techniques, it does not require specifying the number of clusters beforehand. Instead, the algorithm determines the number of clusters based on the data itself. Our goal was to see if applying DBSCAN would naturally result in six clusters corresponding to our cancer subtypes. DBSCAN is also very good for noise detection, which was another reason to use this algorithm. Given, there are around 3000 samples, each with 11,000+ gene expression features, we knew that there would likely be some biological noise that needed to be filtered out and that DBSCAN could help with this. 
 
 #### KMeans (Unsupervised)
 Given that our dataset lacked labeled classes, K-Means offered an unsupervised approach to explore potential groupings based on feature similarity. Its ability to scale efficiently to large datasets and provide a clear assignment of each point to a cluster made it well-suited for our initial exploratory analysis. Additionally, since we could reasonably estimate the number of clusters based on domain knowledge or label counts, K-Means provided a straightforward starting point for evaluating whether the data exhibited natural separation in feature space. While our results suggested weak clustering structure, applying K-Means still allowed us to quantify this through metrics like silhouette score and to visualize possible patterns using PCA projections.
@@ -123,31 +127,31 @@ We also looked at using different hyperparameters to assess the best F1 Score -
 #### Analysis
 Overall the support vector machine model trained on our dataset using the top 5000 highly variable genes showed exceptional accuracy in classifying the cancer subtypes. As demonstrated by the Confusion Matrix, the model can correctly discriminate between the cancer types for all the classes while having a minimal number of misclassifications. The Area Under Curve values for all the classes lie between 0.98-1.00 which demonstrates almost perfect classification by the model. We believe that the success of the model relied upon focusing on the top 5,000 highly variable genes which effectively filtered biological noise while retaining critical biomarkers that the radial basis function kernel was able to utilize to learn the complex relation.
 
-### DBscan
-Our DBscan clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset.
+### DBSCAN
+Our DBSCAN clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset.
 
-<img src="Figures/elbow_plot_dbscan.png" alt="Elbow Plot" width="700">
+<img src="Figures/elbow_plot_DBscan.png" alt="Elbow Plot" width="700">
 
-In choosing epsilon for our DBScan, we decided to leverage the elbow effect and plotted the distance of the 4th nearest neighbor vs the points. As can be seen in the first graph, the ideal epsilon that we decided to select was 25 as that is around where the elbow of the graph is formed. Points below this threshold are more likely to be a part of clusters and points above are more likely to be outliers. 
+In choosing epsilon for our DBSCAN, we decided to leverage the elbow effect and plotted the distance of the 4th nearest neighbor vs the points. As can be seen in the first graph, the ideal epsilon that we decided to select was 25 as that is around where the elbow of the graph is formed. Points below this threshold are more likely to be a part of clusters and points above are more likely to be outliers. 
 
 <img src="Figures/DBscan_clustering.png" alt="DBSCAN Visualization" width="700">
 
-As mentioned before, prior to performing DBScan, we applied PCA to reduce the number of features in the gene expression data to 1000 principal components. We then further reduced these 1000 principal components to 10 utilizing the SelectKBest algorithm. Visualizing how our DBScan algorithm clustered the data in 10-dimensional space is impossible, so we decided to utilize the t-SNE algorithm to try and represent this high-dimensional data in a lower-dimensional space while preserving the relationships and structure of the original data as much as we could. Our DBScan algorithm produced 2 clusters, one with 2899 points (represented by the turquoise points) and one with 4 points (represented by the yellow points). The purple points represent noise. This shows that the data cannot easily be clustered at all utilizing DBScan given the fact that we chose the ideal epsilon value utilizing the elbow method and still got 2 very unbalanced clusters. 
+As mentioned before, prior to performing DBSCAN, we applied PCA to reduce the number of features in the gene expression data to 1000 principal components. We then further reduced these 1000 principal components to 10 utilizing the SelectKBest algorithm. Visualizing how our DBSCAN algorithm clustered the data in 10-dimensional space is impossible, so we decided to utilize the t-SNE algorithm to try and represent this high-dimensional data in a lower-dimensional space while preserving the relationships and structure of the original data as much as we could. Our DBSCAN algorithm produced 2 clusters, one with 2899 points (represented by the turquoise points) and one with 4 points (represented by the yellow points). The purple points represent noise. This shows that the data cannot easily be clustered at all utilizing DBSCAN given the fact that we chose the ideal epsilon value utilizing the elbow method and still got 2 very unbalanced clusters. 
 
 
-##### We used the following metrics to measure the performance of DBscan
+We used the following metrics to measure the performance of DBSCAN:
 
 #### Silhouette coefficient
- Silhouette score combines information about cohesion and separation and will help determine if the clusters discovered actually correspond to different cancer types.  Our DBScan model produced a silhouette score of 0.68713. Silhouette scores range from -1 to 1, with values closer to 1 indicating well-defined, distinct clusters. A score of 0.68713 suggests that the clusters have fairly good separation and cohesion, meaning the clustering captures a lot of the structure in the data.
+ Silhouette score combines information about cohesion and separation and will help determine if the clusters discovered actually correspond to different cancer types.  Our DBSCAN model produced a silhouette score of 0.68713. Silhouette scores range from -1 to 1, with values closer to 1 indicating well-defined, distinct clusters. A score of 0.68713 suggests that the clusters have fairly good separation and cohesion, meaning the clustering captures a lot of the structure in the data.
 
 #### Number of Clusters 
-Our DBScan model was only able to produce two clusters even though we expected six clusters, one for each cancer subtype. This indicates that the data does not naturally cluster into the 6 categories as we would have hoped.
+Our DBSCAN model was only able to produce two clusters even though we expected six clusters, one for each cancer subtype. This indicates that the data does not naturally cluster into the 6 categories as we would have hoped.
 
 
 
 #### Analysis 
 
-Our visualization and metrics suggest that while our dimensionality reduction using PCA was successful, retaining 89.91% of the dataset's variance, the clustering results from the DBSCAN models were less effective than expected. Despite aiming to classify the data into six cancer types, the model only formed two clusters, with a silhouette score of 0.68713, indicating fairly good cluster separation, though not with the number of clusters we would have liked to see. However, these two clusters were extremely unbalanced as shown in the t-SNE visualization above, indicating that DBScan is not a suitable algorithm to properly cluster the data. An explained variance such as the one given before may highlight the issue of redundancy. Redundancy in the high-dimensional gene expression data may have obscured distinct cluster boundaries. This redundancy, combined with potential overlap in gene expression profiles across cancer types, likely contributed to the model’s limited performance. Our next steps include exploring alternative feature selection to reduce redundancy and experimenting with different clustering methods or parameter tuning to better capture the underlying structure of the data.
+Our visualization and metrics suggest that while our dimensionality reduction using PCA was successful, retaining 89.91% of the dataset's variance, the clustering results from the DBSCAN models were less effective than expected. Despite aiming to classify the data into six cancer types, the model only formed two clusters, with a silhouette score of 0.68713, indicating fairly good cluster separation, though not with the number of clusters we would have liked to see. However, these two clusters were extremely unbalanced as shown in the t-SNE visualization above, indicating that DBSCAN is not a suitable algorithm to properly cluster the data. An explained variance such as the one given before may highlight the issue of redundancy. Redundancy in the high-dimensional gene expression data may have obscured distinct cluster boundaries. This redundancy, combined with potential overlap in gene expression profiles across cancer types, likely contributed to the model’s limited performance. Our next steps include exploring alternative feature selection to reduce redundancy and experimenting with different clustering methods or parameter tuning to better capture the underlying structure of the data.
 
 ### KMeans
 Our K-Means was able to cluster into 6 different groups, however the clusters did not have distinct boundaries.
@@ -200,30 +204,32 @@ With the goal of using tree-based models to identify biomarker genes that distin
 ### Comparative analysis of all ML models
 
 Overall, the supervised learning algorithms performed much better than the unsupervised classification algorithms did. With the deep learning approach, where we designed a neural network with 3 hidden layers that utilized a ReLU activation function, batch normalization, and dropout to reduce overfitting, we were able to achieve an overall accuracy of 95.95%. Furthermore, we achieved a F1 score of 0.9512, indicating a very good recall and precision and minimal false positives and negatives, which are both extremely important in cancer diagnosis. We were also able to get a similar level of performance utilizing SVM, ultimately achieving an accuracy of 95%. Our F1 score for this model was once again a strong 94.53%, achieving excellent precision and recall. 
+
 We also tested this model against highly variable genes as explained above, which tend to be even more sporadic than regular genes due to the fact that their expression levels tend to work somewhat unpredictably. However, even utilizing 5000 of these genes, we were able to see an F1 score of close to 95%, further explaining the robustness of this model. Our tree based ensemble models were the worst performing supervised learning methods as they suffered from overfitting. This could be seen when the models would all have an accuracy of 1 no matter the combination of hyperparameters. This was due to the high dimensionality of the data. We attempted to utilize PCA to help performance against the high dimensional data however this made it hard to understand which genes were contributing to cancer, rendering the model useless. However, besides our tree ensemble models, the supervised learning algorithms all performed very well. 
 
-Our unsupervised learning algorithms were unable to properly cluster the data as we would’ve liked. For DBScan, we were hoping that the data would naturally cluster into 6 categories, matching up to the unique number of cancer subtypes. However, the model ended up only forming 2 clusters, with a silhouette score of 0.6871, which actually indicates that the points are pretty well clustered and are quite similar to the rest of the points in their respective clusters. However, the issue is that these two clusters were extremely unbalanced as shown in the t-SNE cluster visualization above, with thousands of points in one cluster and only a handful in another one. This shows that DBScan is not competent enough to properly cluster the data. After scaling and applying PCA for visualization, we also ran K-Means with 6 clusters. Though the 2D plot was able to create six clusters, they showed major overlap with unclear boundaries, and the bar chart revealed a skewed distribution across clusters. A low silhouette score of 0.008 suggests poor separation and potential misclassification. This likely reflects that the features lack strong inherent structure, making K-Means a poor fit for this dataset. As such, both of our unsupervised learning algorithms performed pretty poorly and worse than we would’ve wanted. 
+Our unsupervised learning algorithms were unable to properly cluster the data as we would’ve liked. For DBSCAN, we were hoping that the data would naturally cluster into 6 categories, matching up to the unique number of cancer subtypes. However, the model ended up only forming 2 clusters, with a silhouette score of 0.6871, which actually indicates that the points are pretty well clustered and are quite similar to the rest of the points in their respective clusters. However, the issue is that these two clusters were extremely unbalanced as shown in the t-SNE cluster visualization above, with thousands of points in one cluster and only a handful in another one. This shows that DBSCAN is not competent enough to properly cluster the data. After scaling and applying PCA for visualization, we also ran K-Means with 6 clusters. Though the 2D plot was able to create six clusters, they showed major overlap with unclear boundaries, and the bar chart revealed a skewed distribution across clusters. A low silhouette score of 0.008 suggests poor separation and potential misclassification. This likely reflects that the features lack strong inherent structure, making K-Means a poor fit for this dataset. As such, both of our unsupervised learning algorithms performed pretty poorly and worse than we would’ve wanted. 
 
 
 ### Next Steps
 
 We implemented 5-6 ML models in this project to accurately classify cancer types. As we saw in the results sections above, some models performed very well and some not so well, mainly because they were overfitting due to the high dimensionality of the data. Some improvements for the future include tuning hyperparameters for the models that gave good results to improve the accuracy. Further, we can look at alternate unsupervised clustering algorithms that provide better clustering than DBSCAN and K-means. The deep learning model can also be made more robust by experimenting with different architectures that capture the patterns in the data well to more accurately predict the cancer types. Further, viewing our results and fine-tuning the models, honoring the underlying biological differences across cancer types, also becomes extremely important. Finally verifying the obtained biomarker so that they can be further investigated saves resources and, more importantly, time, which is crucial in these time-sensitive cases.
 
-### Gantt Chart
+## Gantt Chart
 
 If you are unable to view, [please click here](https://gtvault-my.sharepoint.com/:x:/g/personal/akrishna311_gatech_edu/Eadiz29vLKpCnRs4mFdZ65sBznO7p0sx_qCukL3io7JnZw)
 
 <iframe width="800" height="700" frameborder="2" scrolling="no" src="https://1drv.ms/x/c/7413787cefd7dd8b/IQQHojiVklqHS4MdAunuMfn7AcaTi3X3xg2NidJZ7TvC3l4?em=2&wdAllowInteractivity=False&Item='Sheet1'!B2%3ACZ40&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+
 
 ### Contributions
 
 | Name       | Proposal Contributions|        
 |:-------------|:------------------|
 | Hina Gaur          | Data Preprocessing, SVM model explanation in report, Result and Discussion, QC metrics  | 
-| Anagha Mohana Krishna  | SVC code implementation, evaluation and finetuning, updated webpage |
+| Anagha Mohana Krishna  | SVC code implementation, evaluation and finetuning, Random Forest implementation and finetuning, Next Steps in report, Presentation slides, updated webpage |
 | Mridul Anand           | Data Preprocessing Methods, Results and Discussion, Next Steps, Report Formatting | 
-| Ani Vedartham | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics |
-| Vedu Arya | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics   |
+| Ani Vedartham | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBSCAN Code implementation, Visualizations, QC Metrics |
+| Vedu Arya | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBSCAN Code implementation, Visualizations, QC Metrics   |
 
 ### References
 
