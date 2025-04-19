@@ -55,3 +55,68 @@ Next, we applied TSNE to try non-linear Dimensionality Reduction. A t-SNE plot i
 ![PCA plot](Figures/PCA_plot.png)
 
 ## ML Algorithms/Models Implemented
+
+#### Support Vector Machine (Supervised)
+We chose to implement a Support Vector Machine for the cancer classification task because this model is robust at handling high-dimensional data, particularly with the Radial Basis Function (RBF) kernel, which is commonly used to map data points into a higher-dimensional space where a linear decision boundary can be constructed to separate classes. In addition to this, the RBF kernel also allows the model to capture non-linear patterns in the gene expression data, enhancing the performance of the model in differentiating between cancer types.
+
+Moreover, SVM is robust to overfitting as it uses a regularization parameter (C), which helps it to generalize well on new or unseen data. Furthermore, compared to other complex model architectures, SVMs requires less time and computational resources, which makes it feasible to use for real-time cancer diagnostic applications. Overall, by implementing SVM with an RBF kernel, we leverage its strengths in handling high-dimensional and complex biological data while ensuring robustness and generalizability for diagnostic applications.
+
+#### DBscan (Unsupervised)
+In the validation dataset, we found, there are 6 cancer subtypes that the samples were categorized into. Realizing this, we wanted to see if the gene expression data for these samples would naturally cluster into 6 categories. We chose DBscan as our clustering algorithm because, unlike other techniques, it does not require specifying the number of clusters beforehand. Instead, the algorithm determines the number of clusters based on the data itself. Our goal was to see if applying DBSCAN would naturally result in six clusters corresponding to our cancer subtypes. DBScan is also very good for noise detection, which was another reason to use this algorithm. Given, there are around 3000 samples, each with 11,000+ gene expression features, we knew that there would likely be some biological noise that needed to be filtered out and that DBScan could help with this. 
+
+#### KMeans (Unsupervised)
+Given that our dataset lacked labeled classes, K-Means offered an unsupervised approach to explore potential groupings based on feature similarity. Its ability to scale efficiently to large datasets and provide a clear assignment of each point to a cluster made it well-suited for our initial exploratory analysis. Additionally, since we could reasonably estimate the number of clusters based on domain knowledge or label counts, K-Means provided a straightforward starting point for evaluating whether the data exhibited natural separation in feature space. While our results suggested weak clustering structure, applying K-Means still allowed us to quantify this through metrics like silhouette score and to visualize possible patterns using PCA projections.
+
+#### Deep Learning
+We implemented a deep feedforward neural network for classification due to its ability to learn complex patterns in high-dimensional gene expression data. The architecture uses 3 hidden layers to progressively capture relevant biological features through non-linear patterns, enabling the model to capture relationships between gene expression profiles and cancer subtypes. The model incorporates components for robust performance such as - Batch normalization which stabilize training by reducing internal covariate shift, Dropout regularization (p=0.5) prevents overfitting by turning off certain nodes, Adam optimizer with weight decay (λ=1e-5) that enables adaptive learning, ReduceLROnPlateau scheduler that dynamically adjusts learning rates during training plateaus. We also implemented early stopping to prevent overfitting. The final model outputs class probabilities through a softmax layer, enabling interpretability of cancer type predictions. We used 70% of the data for training, 20% for validation and 10% for testing our model. 
+
+#### Tree-based Ensemble Models
+We wanted to try implementing XGBoost, Random Forest and Extra Tree classifier models, mainly to obtain the important genes that help in differentiating the cancer types. 
+
+#### XGBoost
+We implemented XGBoost for cancer classification due to its ability to efficiently handle high-dimensional data with the help of gradient boosting on decision trees. It is particularly suitable for tasks which have complex, non-linear interactions, such as gene expression profiles, by building an ensemble of weak learners that collectively improve predictive performance. The model was configured with the default learning rate, 0.3, allowing the model to maintain convergence stability. A maximum tree depth of 6 enabled each tree to capture intricate patterns without overfitting to noise in the data. To prevent overfitting, we implemented early stopping, halting the training process if the model’s performance on a validation set did not improve over 10 consecutive rounds. These choices helped us build a reliable and accurate model suitable for clinical use for differentiating cancer types.
+
+#### Random Forest and Extra Tree Classifiers
+Random Forest uses bagging and feature subsetting to reduce variance and entropy with each split, thus avoiding overfitting. Extra Trees adds even more randomness by using random split thresholds. Both models are, in general, good choices for handling high-dimensional data and are less sensitive to irrelevant features since they perform feature selection internally during the split process. They calculate the Gini importance of each feature that identifies the important features. This is important as identifying biomarker genes is required for distinguishing cancer types. They are well-suited for the multiclass classification task.
+
+## Results and Discussion
+
+### Support Vector Machine
+
+Our SVM Classifier trained on top 5000 highly variable genes performed quite well with a mean accuracy of 0.95 across all the classes. We looked at several metrics to determine the performance of this model:
+
+#### a. Macro F1
+
+Macro F1 provides a balanced measure of precision and recall as both false positives and false negatives can have serious consequences in cancer diagnosis. This score also makes sure that no single cancer type dominates the model’s performance and that it can be generalized across the dataset. The SVM model achieved an impressive Macro F1 score of 0.9453, reflecting its strong overall performance across all classes.
+
+#### b. Confusion Matrix
+
+ Confusion Matrix illustrates the classification model's performance in predicting six cancer types. The diagonal values represent correct predictions, while off-diagonal values indicate misclassifications. The model demonstrates high accuracy, with minimal errors across all classes as shown below.
+
+![Confusion mat](Figures/Confusion_Matrix.png)
+
+
+#### c. One-vs-Rest multiclass ROC
+ 
+Multiclass ROC plots the True Positive Rate against the False Positive Rate at different thresholds and helps us understand which cancer types are most easily discriminated against. As shown in the plot below, the Area Under Curve (AUC) values are quite high across all cancer types, with three classes having a perfect score of 1 and the other classes having values close to 1. This indicates the model can distinguish between each cancer type and all others with remarkable accuracy. The steep vertical rise of all curves near the top right corner indicates that the model achieves high true positive rates with minimal false positives, which is ideal for diagnostic applications.
+ 
+![AUC ROC](Figures/auc_roc.png)
+
+#### d. Balanced Accuracy
+ Balanced Accuracy represents the arithmetic mean of sensitivity and specificity and will give equal weight to each cancer type. In our SVM model, we got a balanced accuracy score of 94.50% which is a strong score for our classification model
+
+### Hyperparameter tuning
+We also looked at using different hyperparameters to assess the best F1 Score -
+
+#### a. Regularization
+
+ We looked at the performance of the SVM classifier with varying regularization parameter C using 5000 highly variable genes. The graph below plots Accuracy (blue line) and F1 Score (orange line) against C values. Both metrics improve significantly as C increases, indicating better model performance with reduced regularization. Beyond C = 10^0, the metrics plateau, which suggests further increases in C provide diminishing returns in performance. 
+
+ ![Variable C](Figures/SVM_C.png)
+
+#### b. Highly Variable Genes
+
+ We also looked at the SVM classifier performance across different numbers of highly variable genes. The graph below plots Accuracy (blue line) and F1 Score (orange line) against the number of HVGs. Both metrics show a consistent upward trend as the number of HVGs increases, with significant improvement observed from 1000 to 2000 HVGs. Beyond 4000 HVGs, the metrics continue to rise but at a slower rate, indicating smaller returns on performance gains with additional genes. We decided to use 5000 genes in our final model as it produced an adequate classification accuracy with an acceptable runtime. 
+
+  ![Variable Genes](Figures/SVM_Genes.png)
+
