@@ -125,4 +125,4 @@ Overall the support vector machine model trained on our dataset using the top 50
 ### DBscan
 Our DBscan clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset.
 
-  ![Elbow Plot](Figures/elbow_plot_dbscan.png)
+<img src="Figures/elbow_plot_dbscan.png" alt="Elbow Plot" width="400">
