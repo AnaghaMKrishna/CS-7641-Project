@@ -152,3 +152,4 @@ Our visualization and metrics suggest that while our dimensionality reduction us
 ### KMeans
 Our K-Means was able to cluster into 6 different groups, however the clusters did not have distinct boundaries.
 
+<img src="Figures/K_means_visualization.png" alt="Kmeans Visualization" width="700">
