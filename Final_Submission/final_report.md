@@ -120,9 +120,35 @@ We also looked at using different hyperparameters to assess the best F1 Score -
 
   ![Variable Genes](Figures/SVM_Genes.png)
 
+#### Analysis
 Overall the support vector machine model trained on our dataset using the top 5000 highly variable genes showed exceptional accuracy in classifying the cancer subtypes. As demonstrated by the Confusion Matrix, the model can correctly discriminate between the cancer types for all the classes while having a minimal number of misclassifications. The Area Under Curve values for all the classes lie between 0.98-1.00 which demonstrates almost perfect classification by the model. We believe that the success of the model relied upon focusing on the top 5,000 highly variable genes which effectively filtered biological noise while retaining critical biomarkers that the radial basis function kernel was able to utilize to learn the complex relation.
 
 ### DBscan
 Our DBscan clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset.
 
 <img src="Figures/elbow_plot_dbscan.png" alt="Elbow Plot" width="700">
+
+In choosing epsilon for our DBScan, we decided to leverage the elbow effect and plotted the distance of the 4th nearest neighbor vs the points. As can be seen in the first graph, the ideal epsilon that we decided to select was 25 as that is around where the elbow of the graph is formed. Points below this threshold are more likely to be a part of clusters and points above are more likely to be outliers. 
+
+<img src="Figures/DBscan_clustering.png" alt="DBSCAN Visualization" width="700">
+
+As mentioned before, prior to performing DBScan, we applied PCA to reduce the number of features in the gene expression data to 1000 principal components. We then further reduced these 1000 principal components to 10 utilizing the SelectKBest algorithm. Visualizing how our DBScan algorithm clustered the data in 10-dimensional space is impossible, so we decided to utilize the t-SNE algorithm to try and represent this high-dimensional data in a lower-dimensional space while preserving the relationships and structure of the original data as much as we could. Our DBScan algorithm produced 2 clusters, one with 2899 points (represented by the turquoise points) and one with 4 points (represented by the yellow points). The purple points represent noise. This shows that the data cannot easily be clustered at all utilizing DBScan given the fact that we chose the ideal epsilon value utilizing the elbow method and still got 2 very unbalanced clusters. 
+
+
+##### We used the following metrics to measure the performance of DBscan
+
+#### Silhouette coefficient
+ Silhouette score combines information about cohesion and separation and will help determine if the clusters discovered actually correspond to different cancer types.  Our DBScan model produced a silhouette score of 0.68713. Silhouette scores range from -1 to 1, with values closer to 1 indicating well-defined, distinct clusters. A score of 0.68713 suggests that the clusters have fairly good separation and cohesion, meaning the clustering captures a lot of the structure in the data.
+
+#### Number of Clusters 
+Our DBScan model was only able to produce two clusters even though we expected six clusters, one for each cancer subtype. This indicates that the data does not naturally cluster into the 6 categories as we would have hoped.
+
+
+
+#### Analysis 
+
+Our visualization and metrics suggest that while our dimensionality reduction using PCA was successful, retaining 89.91% of the dataset's variance, the clustering results from the DBSCAN models were less effective than expected. Despite aiming to classify the data into six cancer types, the model only formed two clusters, with a silhouette score of 0.68713, indicating fairly good cluster separation, though not with the number of clusters we would have liked to see. However, these two clusters were extremely unbalanced as shown in the t-SNE visualization above, indicating that DBScan is not a suitable algorithm to properly cluster the data. An explained variance such as the one given before may highlight the issue of redundancy. Redundancy in the high-dimensional gene expression data may have obscured distinct cluster boundaries. This redundancy, combined with potential overlap in gene expression profiles across cancer types, likely contributed to the model’s limited performance. Our next steps include exploring alternative feature selection to reduce redundancy and experimenting with different clustering methods or parameter tuning to better capture the underlying structure of the data.
+
+### KMeans
+Our K-Means was able to cluster into 6 different groups, however the clusters did not have distinct boundaries.
+
