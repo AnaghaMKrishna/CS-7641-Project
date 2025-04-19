@@ -121,3 +121,8 @@ We also looked at using different hyperparameters to assess the best F1 Score -
   ![Variable Genes](Figures/SVM_Genes.png)
 
 Overall the support vector machine model trained on our dataset using the top 5000 highly variable genes showed exceptional accuracy in classifying the cancer subtypes. As demonstrated by the Confusion Matrix, the model can correctly discriminate between the cancer types for all the classes while having a minimal number of misclassifications. The Area Under Curve values for all the classes lie between 0.98-1.00 which demonstrates almost perfect classification by the model. We believe that the success of the model relied upon focusing on the top 5,000 highly variable genes which effectively filtered biological noise while retaining critical biomarkers that the radial basis function kernel was able to utilize to learn the complex relation.
+
+### DBscan
+Our DBscan clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset.
+
+  ![Elbow Plot](Figures/elbow_plot_dbscan.png)
