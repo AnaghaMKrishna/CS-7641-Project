@@ -230,7 +230,7 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 | Anagha Mohana Krishna  | SVC evaluation comparing various HVG values, Random Forest implementation and finetuning, Next Steps in report, Presentation slides, updated webpage |
 | Mridul Anand           |  | 
 | Ani Vedartham |  |
-| Vedu Arya | K means model implementation, scatter plot, bar graph, metrics, and analysis. Comparative analysis of all ML models |
+| Vedu Arya | K means model implementation, scatter plot, bar graph, metrics, and analysis. Comparative analysis of all ML models. Presentation slides. |
 
 ### References
 
