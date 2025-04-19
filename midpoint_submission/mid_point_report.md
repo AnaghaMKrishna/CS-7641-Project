@@ -145,7 +145,7 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 
 ## Contributions
 
-| Name       | Proposal Contributions|        
+| Name       | Contributions|        
 |:-------------|:------------------|
 | Hina Gaur          | Data Preprocessing, SVM model explanation in report, Result and Discussion, QC metrics  | 
 | Anagha Mohana Krishna  | SVC code implementation, evaluation and finetuning, updated webpage |

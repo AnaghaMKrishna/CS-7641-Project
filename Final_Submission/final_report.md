@@ -130,7 +130,7 @@ Overall the support vector machine model trained on our dataset using the top 50
 ### DBSCAN
 Our DBSCAN clustering was not able to cluster our data as we had hoped. It was only able to identify 2 clusters from our dataset.
 
-<img src="Figures/elbow_plot_DBscan.png" alt="Elbow Plot" width="700">
+<img src="Figures/elbow_plot_dbscan.png" alt="Elbow Plot" width="700">
 
 In choosing epsilon for our DBSCAN, we decided to leverage the elbow effect and plotted the distance of the 4th nearest neighbor vs the points. As can be seen in the first graph, the ideal epsilon that we decided to select was 25 as that is around where the elbow of the graph is formed. Points below this threshold are more likely to be a part of clusters and points above are more likely to be outliers. 
 
@@ -224,7 +224,7 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 
 ### Contributions
 
-| Name       | Proposal Contributions|        
+| Name       | Contributions|        
 |:-------------|:------------------|
 | Hina Gaur          |   | 
 | Anagha Mohana Krishna  | SVC evaluation comparing various HVG values, Random Forest implementation and finetuning, Next Steps in report, Presentation slides, updated webpage |
