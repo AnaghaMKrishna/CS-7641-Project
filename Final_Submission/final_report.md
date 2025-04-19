@@ -195,11 +195,12 @@ Macro F1 provides a balanced measure of precision and recall as both false posit
 ### Tree-based Ensemble Models
 With the goal of using tree-based models to identify biomarker genes that distinguish cancer types, we implemented tree-based models like XGBoost, Random Forest, and Extra Tree Classifiers. However, all these models suffered from the problem of overfitting, as our data is very high-dimensional and we do not have enough data points in comparison with the number of genes. All the models provided an accuracy of 1.0 consistently for multiple combinations of hyperparameters and values used as can be seen from below accuracy plots depicting different values of hyperparameter chosen. Supporting the above observation, the models performed well and did not overfit when we applied dimensionality reduction like PCA before feeding the data into these models. However, applying PCA transforms the features into Z-space and it is hard to recover the original signature genes that actually contribute to differentiating cancer types.
 
+<img src="Figures/XGboost_accuracy.png" alt="extra tree accuracy" width="700"> 
+
 <img src="Figures/extra_tree_accuracy.png" alt="extra tree accuracy" width="700">
 
 <img src="Figures/random_forest_accuracy.png" alt="extra tree accuracy" width="700">
 
-<img src="Figures/XGboost_accuracy.png" alt="extra tree accuracy" width="700">
 
 ### Comparative analysis of all ML models
 
@@ -225,11 +226,11 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 
 | Name       | Proposal Contributions|        
 |:-------------|:------------------|
-| Hina Gaur          | Data Preprocessing, SVM model explanation in report, Result and Discussion, QC metrics  | 
-| Anagha Mohana Krishna  | SVC code implementation, evaluation and finetuning, Random Forest implementation and finetuning, Next Steps in report, Presentation slides, updated webpage |
-| Mridul Anand           | Data Preprocessing Methods, Results and Discussion, Next Steps, Report Formatting | 
-| Ani Vedartham | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBSCAN Code implementation, Visualizations, QC Metrics |
-| Vedu Arya | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBSCAN Code implementation, Visualizations, QC Metrics   |
+| Hina Gaur          |   | 
+| Anagha Mohana Krishna  | SVC evaluation comparing various HVG values, Random Forest implementation and finetuning, Next Steps in report, Presentation slides, updated webpage |
+| Mridul Anand           |  | 
+| Ani Vedartham |  |
+| Vedu Arya |  |
 
 ### References
 
