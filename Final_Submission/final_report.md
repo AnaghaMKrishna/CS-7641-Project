@@ -225,7 +225,7 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 | Ani Vedartham | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics |
 | Vedu Arya | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics   |
 
-## References
+### References
 
 1. L. Vidman, D. Källberg, and P. Rydén, “Cluster analysis on high dimensional RNA-seq data with applications to cancer research - An evaluation study,” PLOS ONE, vol. 14, no. 12, p. e0219102, Dec. 2019, doi: https://doi.org/10.1371/journal.pone.0219102.
 2. ‌E. Freyhult, M. Landfors, J. Önskog, T. R. Hvidsten, and P. Rydén, “Challenges in microarray class discovery: a comprehensive examination of normalization, gene selection and clustering,” BMC Bioinformatics, vol. 11, no. 1, Oct. 2010, doi: https://doi.org/10.1186/1471-2105-11-503.
