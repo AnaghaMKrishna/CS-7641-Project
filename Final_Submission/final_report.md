@@ -153,3 +153,18 @@ Our visualization and metrics suggest that while our dimensionality reduction us
 Our K-Means was able to cluster into 6 different groups, however the clusters did not have distinct boundaries.
 
 <img src="Figures/K_means_visualization.png" alt="Kmeans Visualization" width="700">
+
+As shown in the plot, we identified six clusters using K-Means, each represented by a distinct color and with centroids marked by red Xs. While some separation between clusters is observable, there is significant overlap among many of the groups, particularly near the center of the plot. 
+
+<img src="Figures/Cluster_member_count.png" alt="Kmeans member count" width="700">
+
+As seen in the graph, the distribution is highly imbalanced, with clusters 2, 3, and 5 containing the majority of points, while clusters 0, 1, and especially 4 contain far fewer. This imbalance suggests that the clustering algorithm grouped a large portion of the data into only a few clusters, potentially merging distinct patterns or failing to capture smaller groups. 
+
+
+#### Metrics:
+a. Silhouette Score: 0.008 - This implies that our clusters have a fair amount of overlapping
+b. Cluster Membership Count: We can see that three clusters dominate the chart
+
+#### Analysis
+After scaling the feature data, we applied PCA to reduce dimensionality for visualization and then performed K-Means clustering with 6 clusters. The PCA-reduced 2D scatter plot shows that while centroids are clearly positioned, there is significant overlap among the clusters, and few visually distinct boundaries between them. The cluster membership bar chart also indicates that the clustering is imbalanced, with three clusters dominating the distribution and others containing far fewer points. This imbalance and overlap are further reflected in the overall silhouette score of 0.008, which is very close to zero, suggesting that most points lie near decision boundaries or may be misclustered. Taken together, these results suggest that the dataset does not naturally separate into well-defined clusters under K-Means, and the features may not support strong cluster structure in their current form.
+
