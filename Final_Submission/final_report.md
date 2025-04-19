@@ -209,13 +209,13 @@ Our unsupervised learning algorithms were unable to properly cluster the data as
 
 We implemented 5-6 ML models in this project to accurately classify cancer types. As we saw in the results sections above, some models performed very well and some not so well, mainly because they were overfitting due to the high dimensionality of the data. Some improvements for the future include tuning hyperparameters for the models that gave good results to improve the accuracy. Further, we can look at alternate unsupervised clustering algorithms that provide better clustering than DBSCAN and K-means. The deep learning model can also be made more robust by experimenting with different architectures that capture the patterns in the data well to more accurately predict the cancer types. Further, viewing our results and fine-tuning the models, honoring the underlying biological differences across cancer types, also becomes extremely important. Finally verifying the obtained biomarker so that they can be further investigated saves resources and, more importantly, time, which is crucial in these time-sensitive cases.
 
-## Gantt Chart
+### Gantt Chart
 
 If you are unable to view, [please click here](https://gtvault-my.sharepoint.com/:x:/g/personal/akrishna311_gatech_edu/Eadiz29vLKpCnRs4mFdZ65sBznO7p0sx_qCukL3io7JnZw)
 
 <iframe width="800" height="700" frameborder="2" scrolling="no" src="https://1drv.ms/x/c/7413787cefd7dd8b/IQQHojiVklqHS4MdAunuMfn7AcaTi3X3xg2NidJZ7TvC3l4?em=2&wdAllowInteractivity=False&Item='Sheet1'!B2%3ACZ40&wdInConfigurator=True&wdInConfigurator=True"></iframe>
 
-## Contributions
+### Contributions
 
 | Name       | Proposal Contributions|        
 |:-------------|:------------------|
