@@ -161,10 +161,77 @@ As shown in the plot, we identified six clusters using K-Means, each represented
 As seen in the graph, the distribution is highly imbalanced, with clusters 2, 3, and 5 containing the majority of points, while clusters 0, 1, and especially 4 contain far fewer. This imbalance suggests that the clustering algorithm grouped a large portion of the data into only a few clusters, potentially merging distinct patterns or failing to capture smaller groups. 
 
 
-#### Metrics:
+#### Metrics
 a. Silhouette Score: 0.008 - This implies that our clusters have a fair amount of overlapping <br>
 b. Cluster Membership Count: We can see that three clusters dominate the chart
 
 #### Analysis
 After scaling the feature data, we applied PCA to reduce dimensionality for visualization and then performed K-Means clustering with 6 clusters. The PCA-reduced 2D scatter plot shows that while centroids are clearly positioned, there is significant overlap among the clusters, and few visually distinct boundaries between them. The cluster membership bar chart also indicates that the clustering is imbalanced, with three clusters dominating the distribution and others containing far fewer points. This imbalance and overlap are further reflected in the overall silhouette score of 0.008, which is very close to zero, suggesting that most points lie near decision boundaries or may be misclustered. Taken together, these results suggest that the dataset does not naturally separate into well-defined clusters under K-Means, and the features may not support strong cluster structure in their current form.
 
+### Deep Learning
+The deep learning model performed quite well giving an overall accuracy of 95.95% on the test dataset. We used the following metrics to measure the performance of the model
+
+#### Confusion Matrix
+Confusion Matrix illustrates the classification model's performance in predicting six cancer types. The diagonal values represent correct predictions, while off-diagonal values indicate misclassifications. The model demonstrates high accuracy, with minimal errors across all classes as shown below.
+
+<img src="Figures/dl_conf_mat.png" alt="DL Confusion matrix" width="700">
+
+#### One vs rest multiclass ROC
+Multiclass ROC plots the True Positive Rate against the False Positive Rate at different thresholds and helps us understand which cancer types are most easily discriminated against. As shown in the plot below, the Area Under Curve (AUC) values are quite high across all cancer types, with three classes having a perfect score of 1 and the other classes having values close to 1. This indicates the model can distinguish between each cancer type and all others with remarkable accuracy. The steep vertical rise of all curves near the top right corner indicates that the model achieves high true positive rates with minimal false positives, which is ideal for diagnostic applications.
+
+<img src="Figures/auc_roc.png" alt="DL auc roc" width="700">
+
+#### Balanced accuracy
+Balanced Accuracy represents the arithmetic mean of sensitivity and specificity and will give equal weight to each cancer type. In our DL model, we got a balanced accuracy score of 0.9498% which is a strong score for our classification model
+
+#### Macro F1
+Macro F1 provides a balanced measure of precision and recall as both false positives and false negatives can have serious consequences in cancer diagnosis. This score also makes sure that no single cancer type dominates the model’s performance and that it can be generalized across the dataset. The DL model achieved an impressive Macro F1 score of 0.9512, reflecting its strong overall performance across all classes.
+
+
+### Tree-based Ensemble Models
+With the goal of using tree-based models to identify biomarker genes that distinguish cancer types, we implemented tree-based models like XGBoost, Random Forest, and Extra Tree Classifiers. However, all these models suffered from the problem of overfitting, as our data is very high-dimensional and we do not have enough data points in comparison with the number of genes. All the models provided an accuracy of 1.0 consistently for multiple combinations of hyperparameters and values used as can be seen from below accuracy plots depicting different values of hyperparameter chosen. Supporting the above observation, the models performed well and did not overfit when we applied dimensionality reduction like PCA before feeding the data into these models. However, applying PCA transforms the features into Z-space and it is hard to recover the original signature genes that actually contribute to differentiating cancer types.
+
+<img src="Figures/extra_tree_accuracy.png" alt="extra tree accuracy" width="700">
+
+<img src="Figures/random_forest_accuracy.png" alt="extra tree accuracy" width="700">
+
+<img src="Figures/XGboost_accuracy.png" alt="extra tree accuracy" width="700">
+
+### Comparative analysis of all ML models
+
+Overall, the supervised learning algorithms performed much better than the unsupervised classification algorithms did. With the deep learning approach, where we designed a neural network with 3 hidden layers that utilized a ReLU activation function, batch normalization, and dropout to reduce overfitting, we were able to achieve an overall accuracy of 95.95%. Furthermore, we achieved a F1 score of 0.9512, indicating a very good recall and precision and minimal false positives and negatives, which are both extremely important in cancer diagnosis. We were also able to get a similar level of performance utilizing SVM, ultimately achieving an accuracy of 95%. Our F1 score for this model was once again a strong 94.53%, achieving excellent precision and recall. 
+We also tested this model against highly variable genes as explained above, which tend to be even more sporadic than regular genes due to the fact that their expression levels tend to work somewhat unpredictably. However, even utilizing 5000 of these genes, we were able to see an F1 score of close to 95%, further explaining the robustness of this model. Our tree based ensemble models were the worst performing supervised learning methods as they suffered from overfitting. This could be seen when the models would all have an accuracy of 1 no matter the combination of hyperparameters. This was due to the high dimensionality of the data. We attempted to utilize PCA to help performance against the high dimensional data however this made it hard to understand which genes were contributing to cancer, rendering the model useless. However, besides our tree ensemble models, the supervised learning algorithms all performed very well. 
+
+Our unsupervised learning algorithms were unable to properly cluster the data as we would’ve liked. For DBScan, we were hoping that the data would naturally cluster into 6 categories, matching up to the unique number of cancer subtypes. However, the model ended up only forming 2 clusters, with a silhouette score of 0.6871, which actually indicates that the points are pretty well clustered and are quite similar to the rest of the points in their respective clusters. However, the issue is that these two clusters were extremely unbalanced as shown in the t-SNE cluster visualization above, with thousands of points in one cluster and only a handful in another one. This shows that DBScan is not competent enough to properly cluster the data. After scaling and applying PCA for visualization, we also ran K-Means with 6 clusters. Though the 2D plot was able to create six clusters, they showed major overlap with unclear boundaries, and the bar chart revealed a skewed distribution across clusters. A low silhouette score of 0.008 suggests poor separation and potential misclassification. This likely reflects that the features lack strong inherent structure, making K-Means a poor fit for this dataset. As such, both of our unsupervised learning algorithms performed pretty poorly and worse than we would’ve wanted. 
+
+
+### Next Steps
+
+We implemented 5-6 ML models in this project to accurately classify cancer types. As we saw in the results sections above, some models performed very well and some not so well, mainly because they were overfitting due to the high dimensionality of the data. Some improvements for the future include tuning hyperparameters for the models that gave good results to improve the accuracy. Further, we can look at alternate unsupervised clustering algorithms that provide better clustering than DBSCAN and K-means. The deep learning model can also be made more robust by experimenting with different architectures that capture the patterns in the data well to more accurately predict the cancer types. Further, viewing our results and fine-tuning the models, honoring the underlying biological differences across cancer types, also becomes extremely important. Finally verifying the obtained biomarker so that they can be further investigated saves resources and, more importantly, time, which is crucial in these time-sensitive cases.
+
+## Gantt Chart
+
+If you are unable to view, [please click here](https://gtvault-my.sharepoint.com/:x:/g/personal/akrishna311_gatech_edu/Eadiz29vLKpCnRs4mFdZ65sBznO7p0sx_qCukL3io7JnZw)
+
+<iframe width="800" height="700" frameborder="2" scrolling="no" src="https://1drv.ms/x/c/7413787cefd7dd8b/IQQHojiVklqHS4MdAunuMfn7AcaTi3X3xg2NidJZ7TvC3l4?em=2&wdAllowInteractivity=False&Item='Sheet1'!B2%3ACZ40&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+
+## Contributions
+
+| Name       | Proposal Contributions|        
+|:-------------|:------------------|
+| Hina Gaur          | Data Preprocessing, SVM model explanation in report, Result and Discussion, QC metrics  | 
+| Anagha Mohana Krishna  | SVC code implementation, evaluation and finetuning, updated webpage |
+| Mridul Anand           | Data Preprocessing Methods, Results and Discussion, Next Steps, Report Formatting | 
+| Ani Vedartham | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics |
+| Vedu Arya | Data Preprocessing Methods, ML Algorithms/Models, Results and Discussion, DBScan Code implementation, Visualizations, QC Metrics   |
+
+## References
+
+1. L. Vidman, D. Källberg, and P. Rydén, “Cluster analysis on high dimensional RNA-seq data with applications to cancer research - An evaluation study,” PLOS ONE, vol. 14, no. 12, p. e0219102, Dec. 2019, doi: https://doi.org/10.1371/journal.pone.0219102.
+2. ‌E. Freyhult, M. Landfors, J. Önskog, T. R. Hvidsten, and P. Rydén, “Challenges in microarray class discovery: a comprehensive examination of normalization, gene selection and clustering,” BMC Bioinformatics, vol. 11, no. 1, Oct. 2010, doi: https://doi.org/10.1186/1471-2105-11-503.
+3. D. Källberg, L. Vidman, and Patrik Rydén, “Comparison of Methods for Feature Selection in Clustering of High-Dimensional RNA-Sequencing Data to Identify Cancer Subtypes,” Frontiers in Genetics, vol. 12, Feb. 2021, doi: https://doi.org/10.3389/fgene.2021.632620.
+4. M. J. Goldman et al., “Visualizing and interpreting cancer genomics data via the Xena platform,” Nature Biotechnology, vol. 38, no. 6, pp. 675–678, May 2020, doi: https://doi.org/10.1038/s41587-020-0546-8.
+5. J. N. Weinstein et al., “The Cancer Genome Atlas Pan-Cancer analysis project,” Nature Genetics, vol. 45, no. 10, pp. 1113–1120, Sep. 2013, doi: https://doi.org/10.1038/ng.2764.
+6. GeeksforGeeks, “F1 Score in Machine Learning,” GeeksforGeeks, Dec. 27, 2023. https://www.geeksforgeeks.org/f1-score-in-machine-learning/
+
+[Back to home](./)
