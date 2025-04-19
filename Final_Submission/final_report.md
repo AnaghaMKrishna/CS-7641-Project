@@ -162,7 +162,7 @@ As seen in the graph, the distribution is highly imbalanced, with clusters 2, 3,
 
 
 #### Metrics:
-a. Silhouette Score: 0.008 - This implies that our clusters have a fair amount of overlapping
+a. Silhouette Score: 0.008 - This implies that our clusters have a fair amount of overlapping <br>
 b. Cluster Membership Count: We can see that three clusters dominate the chart
 
 #### Analysis
