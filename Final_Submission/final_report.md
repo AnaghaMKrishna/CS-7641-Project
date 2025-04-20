@@ -186,7 +186,7 @@ Multiclass ROC plots the True Positive Rate against the False Positive Rate at d
 <img src="Figures/auc_roc.png" alt="DL auc roc" width="700">
 
 #### Balanced accuracy
-Balanced Accuracy represents the arithmetic mean of sensitivity and specificity and will give equal weight to each cancer type. In our DL model, we got a balanced accuracy score of 0.9498% which is a strong score for our classification model
+Balanced Accuracy represents the arithmetic mean of sensitivity and specificity and will give equal weight to each cancer type. In our DL model, we got a balanced accuracy score of 94.98% which is a strong score for our classification model
 
 #### Macro F1
 Macro F1 provides a balanced measure of precision and recall as both false positives and false negatives can have serious consequences in cancer diagnosis. This score also makes sure that no single cancer type dominates the model’s performance and that it can be generalized across the dataset. The DL model achieved an impressive Macro F1 score of 0.9512, reflecting its strong overall performance across all classes.
