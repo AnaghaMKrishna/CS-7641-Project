@@ -226,7 +226,7 @@ If you are unable to view, [please click here](https://gtvault-my.sharepoint.com
 
 | Name       | Contributions|        
 |:-------------|:------------------|
-| Hina Gaur          | XGBoost implementation and evaluation, report writing, presentation slides  | 
+| Hina Gaur          | XGBoost implementation, evaluation and finetuning, report writing, presentation slides, performance metric analysis | 
 | Anagha Mohana Krishna  | SVC evaluation comparing various HVG values, Random Forest implementation and finetuning, Next Steps in report, Presentation slides, updated webpage |
 | Mridul Anand           |  | 
 | Ani Vedartham | DBScan model implementation, DBScan elbow graph, DBScan clusters visualization, quantitative metrics, analysis, comparative analysis of all ML models, presentation slides |
